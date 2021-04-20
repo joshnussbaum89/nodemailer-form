@@ -45,16 +45,16 @@ app.post("/send", (req, res) => {
   let form = new multiparty.Form();
   let data = {};
   form.parse(req, (err, fields) => {
-    // console.log(fields); ///////////////////
+    console.log(fields); ///////////////////
     Object.keys(fields).forEach((property) => {
       data[property] = fields[property].toString();
     });
-
+    console.log(data);
     const mail = {
       from: data.name,
       to: "joshnussbaum89@gmail.com",
       subject: data.subject,
-      text: `From: ${data.name}, <${data.email}> \n${data.message}`,
+      text: `${data.name} <${data.email}> \n${data.message}`,
     };
 
     transporter.sendMail(mail, (err, data) => {
