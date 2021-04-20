@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 // instantiate an express app
 const app = express();
 // cors
-app.use(cors({ origin: "*" }));
+app.use(cors());
 // make public static
 app.use("/public", express.static(process.cwd() + "/public")); //make public static
 
