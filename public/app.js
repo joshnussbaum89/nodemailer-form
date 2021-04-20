@@ -16,7 +16,7 @@ const formEvent = form.addEventListener("submit", (event) => {
 
 async function sendMail(mail) {
   // THIS NEEDS TO BE A HOSTED URL!
-  await fetch("http://localhost:5000/send", {
+  await fetch("https://contact-form-josh.herokuapp.com/send", {
     method: "POST",
     body: mail,
   }).then((response) => {
