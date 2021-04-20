@@ -35,7 +35,7 @@ app.post("/send", (req, res) => {
   let form = new multiparty.Form();
   let data = {};
   form.parse(req, (err, fields) => {
-    console.log(fields); ///////////////////
+    // console.log(fields); ///////////////////
     Object.keys(fields).forEach((property) => {
       data[property] = fields[property].toString();
     });
@@ -48,12 +48,13 @@ app.post("/send", (req, res) => {
     };
 
     transporter.sendMail(mail, (err, data) => {
+      console.log(data);
       if (err) {
         console.log(err);
         // maybe turn back to .send()?
         res.status(500).json("Something went wrong.");
       } else {
-        res.status(200).json("Success");
+        res.status(200).json({ status: "Success" });
       }
     });
   });
