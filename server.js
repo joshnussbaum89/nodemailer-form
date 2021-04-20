@@ -15,8 +15,17 @@ app.use(express.json());
 // make public static
 app.use("/public", express.static(process.cwd() + "/public")); //make public static
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
+// const transporter = nodemailer.createTransport({
+//   service: "gmail",
+//   auth: {
+//     user: "joshnussbaum89@gmail.com",
+//     pass: "Slamti1me",
+//   },
+// });
+var transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true, // use SSL
   auth: {
     user: "joshnussbaum89@gmail.com",
     pass: "Slamti1me",
@@ -49,11 +58,9 @@ app.post("/send", (req, res) => {
     };
 
     transporter.sendMail(mail, (err, data) => {
-      console.log(data);
+      console.log(mail);
       if (err) {
-        console.log(err);
-        // maybe turn back to .send()?
-        res.status(500).json("Something went wrong.");
+        res.status(500).json({ status: "Something went wrong." });
       } else {
         res.status(200).json({ status: "Success" });
       }
