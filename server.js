@@ -11,18 +11,12 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 // cors
 app.use(cors());
+// body parser
 app.use(express.json());
 // make public static
-app.use("/public", express.static(process.cwd() + "/public")); //make public static
+app.use("/public", express.static(process.cwd() + "/public"));
 
-// const transporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     user: "joshnussbaum89@gmail.com",
-//     pass: "Slamti1me",
-//   },
-// });
-var transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
   secure: true, // use SSL
@@ -45,11 +39,10 @@ app.post("/send", (req, res) => {
   let form = new multiparty.Form();
   let data = {};
   form.parse(req, (err, fields) => {
-    console.log(fields); ///////////////////
     Object.keys(fields).forEach((property) => {
       data[property] = fields[property].toString();
     });
-    console.log(data);
+
     const mail = {
       from: data.name,
       to: "joshnussbaum89@gmail.com",
@@ -58,7 +51,6 @@ app.post("/send", (req, res) => {
     };
 
     transporter.sendMail(mail, (err, data) => {
-      console.log(mail);
       if (err) {
         res.status(500).json({ status: "Something went wrong." });
       } else {

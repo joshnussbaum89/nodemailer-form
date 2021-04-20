@@ -2,13 +2,11 @@ body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
-
 .contact-container {
   width: 80%;
   margin: 4rem auto;
   text-align: center;
 }
-
 #contact-form {
   width: 90%;
   margin: auto;
@@ -17,7 +15,6 @@ body {
   justify-content: center;
   align-content: center;
 }
-
 .contact-info {
   display: flex;
   justify-content: center;
@@ -38,12 +35,10 @@ body {
 #email {
   width: 100%;
 }
-
 #subject,
 #message {
   width: inherit;
 }
-
 .submit-btn {
   background: rgb(0, 255, 255);
   transition: ease-in-out 0.2s;
