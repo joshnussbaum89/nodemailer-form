@@ -15,8 +15,7 @@ app.use(cors({ origin: "*" }));
 app.use("/public", express.static(process.cwd() + "/public")); //make public static
 
 const transporter = nodemailer.createTransport({
-  service: "smtp.gmail.com",
-  port: 465,
+  service: "gmail",
   auth: {
     user: "joshnussbaum89@gmail.com",
     pass: "Slamti1me",
@@ -26,7 +25,8 @@ const transporter = nodemailer.createTransport({
 // verify connection configuration
 transporter.verify((error, success) => {
   if (error) {
-    console.log(error);
+    console.log(transporter.options.host);
+    console.log("Error: ", error);
   } else {
     console.log("Server is ready to take our messages");
   }
@@ -43,9 +43,9 @@ app.post("/send", (req, res) => {
 
     const mail = {
       from: data.name,
-      to: process.env.EMAIL,
+      to: "joshnussbaum89@gmail.com",
       subject: data.subject,
-      text: `${data.name} <${data.email}> \n${data.message}`,
+      text: `From: ${data.name}, <${data.email}> \n${data.message}`,
     };
 
     transporter.sendMail(mail, (err, data) => {
