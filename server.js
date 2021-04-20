@@ -25,7 +25,6 @@ const transporter = nodemailer.createTransport({
 // verify connection configuration
 transporter.verify((error, success) => {
   if (error) {
-    console.log(transporter.options.host);
     console.log("Error: ", error);
   } else {
     console.log("Server is ready to take our messages");
@@ -36,7 +35,7 @@ app.post("/send", (req, res) => {
   let form = new multiparty.Form();
   let data = {};
   form.parse(req, (err, fields) => {
-    console.log(fields);
+    console.log(fields); ///////////////////
     Object.keys(fields).forEach((property) => {
       data[property] = fields[property].toString();
     });
@@ -51,9 +50,10 @@ app.post("/send", (req, res) => {
     transporter.sendMail(mail, (err, data) => {
       if (err) {
         console.log(err);
-        res.status(500).send("Something went wrong.");
+        // maybe turn back to .send()?
+        res.status(500).json("Something went wrong.");
       } else {
-        res.status(200).send("Success :)");
+        res.status(200).json("Success");
       }
     });
   });

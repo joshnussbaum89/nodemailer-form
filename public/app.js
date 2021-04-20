@@ -14,13 +14,12 @@ const formEvent = form.addEventListener("submit", (event) => {
 // 2. Specify the method as 'post' since we are sending data, not getting.
 // 3. Specify the body as 'mail' because we are sending this data in our request
 
-const sendMail = (mail) => {
+async function sendMail(mail) {
   // THIS NEEDS TO BE A HOSTED URL!
-  fetch("https://contact-form-josh.herokuapp.com/send", {
-    method: "post",
+  await fetch("http://localhost:5000/send", {
+    method: "POST",
     body: mail,
   }).then((response) => {
-    console.log(response);
     return response.json();
   });
-};
+}
