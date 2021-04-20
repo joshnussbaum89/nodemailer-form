@@ -1,0 +1,58 @@
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.contact-container {
+  width: 80%;
+  margin: 4rem auto;
+  text-align: center;
+}
+
+#contact-form {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+}
+.contact-message {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+#name,
+#email,
+#subject,
+#message {
+  padding: 0.75rem;
+  margin: 0.2rem;
+}
+#name,
+#email {
+  width: 100%;
+}
+
+#subject,
+#message {
+  width: inherit;
+}
+
+.submit-btn {
+  background: rgb(0, 255, 255);
+  transition: ease-in-out 0.2s;
+  padding: 0.5rem;
+  margin: 1rem;
+  width: 25%;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.submit-btn:hover {
+  background: rgb(0, 219, 219);
+}

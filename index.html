@@ -1,16 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Contact Form</title>
-</head>
+  </head>
 
-<body>
-
-    <script src="js/script.js"></script>
-</body>
-
+  <body>
+    <div class="contact-container">
+      <h2 class="title">Contact Me</h2>
+      <form
+        id="contact-form"
+        method="POST"
+        action="send"
+        enctype="multipart/form-data"
+      >
+        <div class="contact-info">
+          <input
+            placeholder="Name"
+            id="name"
+            name="name"
+            type="text"
+            required
+          />
+          <input
+            placeholder="Email"
+            id="email"
+            type="email"
+            name="email"
+            aria-describedby="emailHelp"
+            required
+          />
+        </div>
+        <div class="contact-message">
+          <input
+            placeholder="Subject"
+            id="subject"
+            name="subject"
+            type="text"
+            required
+          />
+          <textarea
+            placeholder="Message"
+            id="message"
+            name="message"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+        <div>
+          <button type="submit" value="submit" class="submit-btn">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+    <script src="app.js"></script>
+  </body>
 </html>
