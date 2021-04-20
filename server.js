@@ -14,15 +14,12 @@ app.use(cors({ origin: "*" }));
 // make public static
 app.use("/public", express.static(process.cwd() + "/public")); //make public static
 
-process.env.EMAIL = "joshnussbaum89@gmail.com";
-process.env.PASS = "Slamti1me";
-
 const transporter = nodemailer.createTransport({
   service: "smtp.gmail.com",
-  port: 587,
+  port: 465,
   auth: {
-    user: process.env.EMAIL,
-    pass: process.env.PASS,
+    user: "joshnussbaum89@gmail.com",
+    pass: "Slamti1me",
   },
 });
 
@@ -56,7 +53,7 @@ app.post("/send", (req, res) => {
         console.log(err);
         res.status(500).send("Something went wrong.");
       } else {
-        res.status(200).send("Email successfully sent to recipient!");
+        res.status(200).json({ status: "success" });
       }
     });
   });

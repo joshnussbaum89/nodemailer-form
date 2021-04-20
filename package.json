@@ -2,7 +2,7 @@
   "name": "contact-form",
   "version": "1.0.0",
   "description": "Fully functional contact form",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -13,10 +13,6 @@
   },
   "author": "Josh Nussbaum",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/joshnussbaum89/Contact-Form/issues"
-  },
-  "homepage": "https://github.com/joshnussbaum89/Contact-Form#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
