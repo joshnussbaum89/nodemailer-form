@@ -1,13 +1,25 @@
 const express = require("express");
+const cors = require("cors");
 const nodemailer = require("nodemailer");
 const multiparty = require("multiparty");
 require("dotenv").config();
 
+// port will be 5000 for testing
+const PORT = process.env.PORT || 5000;
+
 // instantiate an express app
 const app = express();
+// cors
+app.use(cors({ origin: "*" }));
+// make public static
+app.use("/public", express.static(process.cwd() + "/public")); //make public static
+
+process.env.EMAIL = "joshnussbaum89@gmail.com";
+process.env.PASS = "Slamti1me";
 
 const transporter = nodemailer.createTransport({
   service: "smtp.gmail.com",
+  port: 587,
   auth: {
     user: process.env.EMAIL,
     pass: process.env.PASS,
@@ -55,8 +67,6 @@ app.route("/").get((req, res) => {
   res.sendFile(`${process.cwd()}/public/index.html`);
 });
 
-// port will be 5000 for testing
-const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}...`);
 });
